@@ -25,10 +25,33 @@ testSet = pd.read_csv(testData)
 
 #Filtering out our data:
 
-dataSet.dropna(subset=[], inplace=True)
-y = dataSet["MotionResultCode"] # binary 1 or 0, 1 is granted 0 is denyed 
+trainSet.dropna(subset=[], inplace=True)
+x_train = None 
+y_train = trainSet["MotionResultCode"] # binary 1 or 0, 1 is granted 0 is denyed 
+
+x_test =  None 
+y_test = None
 
 
 
+# Testing our Models: 
+
+#adaBoost 
+ada = AdaBoostClassifier()
+dTree = DecisionTreeClassifier()
+rForest= RandomForestRegressor()
+gBoost = GradientBoostingRegressor()
+
+models = [ada,dTree,rForest, gBoost]
+predict= 
+for model in models:
+    model.fit()
+
+xgB = xgb.XGBClassifier()
+
+
+ada.fit(x_train, y_train)
+adaPrediction = ada.predict(x_test)
+r2 = r2_score(y_test,adaPrediction)
 
 
