@@ -64,4 +64,4 @@ The model is trained on structured CSV data, with options to expand into natural
 
 ## **Results (from reference study)**
 
-When similar data was used in the *UConn “MotionPredict” research project*, models achieved up to **64% accuracy**, improving significantly when complaint text features were included alongside court data.
+As we do not continue foward with the word emedding for this specific instance of the project, we mock similar results to the inital paper, ranging from 55-58% accuracy across models.
