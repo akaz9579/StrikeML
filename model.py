@@ -8,7 +8,7 @@ from sklearn.tree import DecisionTreeClassifier
 import xgboost as xgb
 from sklearn.metrics import accuracy_score, classification_report
 import matplotlib.pyplot as plt
-from sklearn.preprocessing import PolynomialFeatures as poly
+from sklearn.preprocessing import PolynomialFeatures 
 
 
 #Import data, set up data
@@ -72,16 +72,29 @@ gBoost = GradientBoostingClassifier()
 
 models = [ada,dTree,rForest,gBoost]
 
+poly = PolynomialFeatures(degree=2, include_bias=False)
+x_trainPoly = poly.fit_transform(x_train)
+x_testPoly = poly.fit_transform(x_test)
+
 for model in models:
+    #given data
     model.fit(x_train,y_train)
     y_pred = model.predict(x_test)
     acc = accuracy_score(y_test,y_pred)
-    print(f"{model.__class__.__name__} Was {acc:.3f}% accurate")
+    print(f"{model.__class__.__name__} Was {acc:.3f}% accurate (Normal)")
+  
+    #optimized data via polynomal features 
+    model.fit(x_trainPoly, y_train)
+    y_predP = model.predict(x_testPoly)
+    accP = accuracy_score(y_test, y_predP)
+    print(f"{model.__class__.__name__} Was {accP:.3f}% accurate (Optimized)")
+
+
 
 xgB = xgb.XGBClassifier()
 
 
-for model in models:
+
 
 
 
